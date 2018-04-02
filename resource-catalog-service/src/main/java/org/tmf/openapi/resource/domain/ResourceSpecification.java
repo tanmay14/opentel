@@ -78,10 +78,6 @@ public class ResourceSpecification {
 	private List<ResourceSpecCharacteristic> resourceSpecCharacteristic;	
 
 	private List<ResourceSpecificationRelationship> resourceSpecificationRelationship;
-
-	
-
-	
 	
 
 }

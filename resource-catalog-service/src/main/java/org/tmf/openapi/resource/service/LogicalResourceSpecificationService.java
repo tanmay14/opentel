@@ -24,10 +24,15 @@ public class LogicalResourceSpecificationService {
 	public LogicalResourceSpecification createLogicalResourceSpecification(@Valid LogicalResourceSpecification logicalResourceSpecification) {
 
 		if (logicalResourceSpecification.getId() != null) {
-			throw new IllegalArgumentException("id must be empty while creating Category");
+			throw new IllegalArgumentException("id must be empty while creating LogicalResourceSpecification");
 		}
 
+		if(null!=logicalResourceSpecification.getName() && null!=logicalResourceSpecification.getType()) {
 		setDefaultValues(logicalResourceSpecification);
+		}
+		else {
+			throw new IllegalArgumentException("name/type must be not be empty while creating LogicalResourceSpecification");
+		}
 
 		return logicalResourceSpecificationRespository.save(logicalResourceSpecification);
 	}
@@ -75,6 +80,10 @@ public class LogicalResourceSpecificationService {
 		if (null != logicalResourceSpecification.getSchemaLocation()) {
 			existingLogicalResourceSpecification.setSchemaLocation(logicalResourceSpecification.getSchemaLocation());
 		}
+		
+		if (null!=logicalResourceSpecification.getBaseType()) {
+			existingLogicalResourceSpecification.setBaseType(logicalResourceSpecification.getBaseType());
+		}
 
 		if (null != logicalResourceSpecification.getVersion()) {
 			existingLogicalResourceSpecification.setVersion(logicalResourceSpecification.getVersion());
@@ -97,8 +106,8 @@ public class LogicalResourceSpecificationService {
 	}
 
 	private void setDefaultValues(LogicalResourceSpecification logicalResourceSpecification) {
-		if (null == logicalResourceSpecification.getType() || logicalResourceSpecification.getType().trim().equals("")) {
-			logicalResourceSpecification.setType("ServiceCategory");
+		if (null == logicalResourceSpecification.getBaseType() || logicalResourceSpecification.getBaseType().trim().equals("")) {
+			logicalResourceSpecification.setBaseType("ResourceSpecification");
 		}
 
 		if (null == logicalResourceSpecification.getVersion()) {

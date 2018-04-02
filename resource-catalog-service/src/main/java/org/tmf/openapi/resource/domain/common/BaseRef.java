@@ -15,9 +15,11 @@ public abstract class BaseRef {
 
 	@NotEmpty
 	private String id;
-
+    
+	@NotEmpty
 	private String href;
 
+	@NotEmpty
 	private String name;
 
 	@JsonProperty("@type")

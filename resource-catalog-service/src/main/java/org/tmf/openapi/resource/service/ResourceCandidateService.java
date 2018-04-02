@@ -64,7 +64,7 @@ public class ResourceCandidateService {
 
 		ResourceCandidate existingResourceCandidate = getExistingResourceCandidate(resourceCandidate.getId());
 
-				
+
 		if (null != resourceCandidate.getName()) {
 			existingResourceCandidate.setName(resourceCandidate.getName());
 		}
@@ -89,23 +89,14 @@ public class ResourceCandidateService {
 			existingResourceCandidate.setSchemaLocation(resourceCandidate.getSchemaLocation());
 		}	
 
-		
 		if (null != resourceCandidate.getCategory()) {
 			existingResourceCandidate.setCategory(resourceCandidate.getCategory());
 		}
-		
-		if(null!=resourceCandidate.getType()) {
-			existingResourceCandidate.setType(resourceCandidate.getType());
-		}
-		
+
 		if(null!=resourceCandidate.getBaseType()) {
 			existingResourceCandidate.setBaseType(resourceCandidate.getBaseType());
 		}
-		
-		if(null!=resourceCandidate.getLastUpdate()) {
-			existingResourceCandidate.setLastUpdate(resourceCandidate.getLastUpdate());
-		}
-		
+
 		if(null!=resourceCandidate.getResourceSpecification()) {
 			existingResourceCandidate.setResourceSpecification(resourceCandidate.getResourceSpecification());
 		}
@@ -119,11 +110,16 @@ public class ResourceCandidateService {
 	}
 
 	private void setDefaultValues(ResourceCandidate resourceCandidate) {
-		
+
 
 		if (null == resourceCandidate.getType() || resourceCandidate.getType().trim().equals("")) {
 
-			resourceCandidate.setType("ResourceCandidate");
+			resourceCandidate.setType("ResourceCategory");
+		}
+
+		if (null == resourceCandidate.getBaseType() || resourceCandidate.getType().trim().equals("")) {
+
+			resourceCandidate.setBaseType("Category");
 		}
 
 	}

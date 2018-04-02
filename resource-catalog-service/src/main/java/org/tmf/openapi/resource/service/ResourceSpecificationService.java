@@ -25,10 +25,16 @@ public class ResourceSpecificationService {
 	public ResourceSpecification createResourceSpecification(@Valid ResourceSpecification resourceSpecification) {
 
 		if (resourceSpecification.getId() != null) {
-			throw new IllegalArgumentException("id must be empty while creating Category");
+			throw new IllegalArgumentException("id must be empty while creating ResourceSpecification");
 		}
-
-		setDefaultValues(resourceSpecification);
+		
+		if(null!=resourceSpecification.getName() && null!=resourceSpecification.getType()) {
+		
+			setDefaultValues(resourceSpecification);
+		}
+		else {
+			throw new IllegalArgumentException("name/type is mandatory while creating ResourceSpecification");
+		}
 
 		return resourceSpecificationRepository.save(resourceSpecification);
 	}
@@ -47,8 +53,8 @@ public class ResourceSpecificationService {
 	
 
 	public void deleteResourceSpecification(@NotNull String id) {
-		ResourceSpecification existingCategory = getExistingCategory(id);
-		resourceSpecificationRepository.delete(existingCategory);
+		ResourceSpecification existingResourceSpecification = getExistingCategory(id);
+		resourceSpecificationRepository.delete(existingResourceSpecification);
 
 	}
 
@@ -63,37 +69,70 @@ public class ResourceSpecificationService {
 			throw new IllegalArgumentException("id is mandatory field for update.");
 		}
 
-		ResourceSpecification existingCategory = getExistingCategory(resourceSpecification.getId());
+		ResourceSpecification existingResourceSpecification = getExistingCategory(resourceSpecification.getId());
 
 		if (null != resourceSpecification.getName()) {
-			existingCategory.setName(resourceSpecification.getName());
+			existingResourceSpecification.setName(resourceSpecification.getName());
 		}
 
 		if (null != resourceSpecification.getDescription()) {
-			existingCategory.setDescription(resourceSpecification.getDescription());
+			existingResourceSpecification.setDescription(resourceSpecification.getDescription());
 		}
 
 		if (null != resourceSpecification.getSchemaLocation()) {
-			existingCategory.setSchemaLocation(resourceSpecification.getSchemaLocation());
+			existingResourceSpecification.setSchemaLocation(resourceSpecification.getSchemaLocation());
+		}
+		
+		if (null!=resourceSpecification.getBaseType()) {
+			existingResourceSpecification.setBaseType(resourceSpecification.getBaseType());
 		}
 
 		if (null != resourceSpecification.getVersion()) {
-			existingCategory.setVersion(resourceSpecification.getVersion());
+			existingResourceSpecification.setVersion(resourceSpecification.getVersion());
 		}
 
 		if (null != resourceSpecification.getValidFor()) {
-			existingCategory.setValidFor(resourceSpecification.getValidFor());
+			existingResourceSpecification.setValidFor(resourceSpecification.getValidFor());
 		}
 
 		if (null != resourceSpecification.getLifecycleStatus()) {
-			existingCategory.setLifecycleStatus(resourceSpecification.getLifecycleStatus());
+			existingResourceSpecification.setLifecycleStatus(resourceSpecification.getLifecycleStatus());
 		}
-
+		
+		if (null != resourceSpecification.getCategory()) {
+			existingResourceSpecification.setCategory(resourceSpecification.getCategory());
+		}
+		
+		if (null != resourceSpecification.getTargetResourceSchema()) {
+			existingResourceSpecification.setTargetResourceSchema(resourceSpecification.getTargetResourceSchema());
+		}
+		
+		if (null != resourceSpecification.getFeature()) {
+			existingResourceSpecification.setFeature(resourceSpecification.getFeature());
+		}
+		
+		if (null != resourceSpecification.getAttachment()) {
+			existingResourceSpecification.setAttachment(resourceSpecification.getAttachment());
+		}
+		
+		if (null != resourceSpecification.getRelatedParty()) {
+			existingResourceSpecification.setRelatedParty(resourceSpecification.getRelatedParty());
+		}
+		
+		if(null!=resourceSpecification.getResourceSpecCharacteristic()) {
+			existingResourceSpecification.setResourceSpecCharacteristic(resourceSpecification.getResourceSpecCharacteristic());
+		}
+		
+		if(null!=resourceSpecification.getResourceSpecificationRelationship()) {
+			existingResourceSpecification.setResourceSpecificationRelationship(resourceSpecification.getResourceSpecificationRelationship());
+		}
 		
 
 		
 
-		return saveResourceSpecification(existingCategory);
+		
+
+		return saveResourceSpecification(existingResourceSpecification);
 
 	}
 
@@ -102,25 +141,21 @@ public class ResourceSpecificationService {
 	}
 
 	private void setDefaultValues(ResourceSpecification resourceSpecification) {
-		if (null == resourceSpecification.getType() || resourceSpecification.getType().trim().equals("")) {
-			resourceSpecification.setType("ServiceCategory");
-		}
+		
 
-		if (null == resourceSpecification.getVersion()) {
-			resourceSpecification.setVersion("1.0");
-		}
+		
 
 		
 	}
 
 	private ResourceSpecification getExistingCategory(@NotNull String id) {
-		Optional<ResourceSpecification> existingCategoryOption = resourceSpecificationRepository.findById(id);
-		if (!existingCategoryOption.isPresent()) {
+		Optional<ResourceSpecification> existingResourceSpecificationOption = resourceSpecificationRepository.findById(id);
+		if (!existingResourceSpecificationOption.isPresent()) {
 			throw new IllegalArgumentException("resourceSpecificationRepository with id " + id + " doesnot exists");
 		}
 
-		ResourceSpecification existingCategory = existingCategoryOption.get();
-		return existingCategory;
+		ResourceSpecification existingResourceSpecification = existingResourceSpecificationOption.get();
+		return existingResourceSpecification;
 	}
 
 }
