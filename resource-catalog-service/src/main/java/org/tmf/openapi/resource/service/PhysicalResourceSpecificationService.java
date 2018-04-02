@@ -24,7 +24,7 @@ public class PhysicalResourceSpecificationService {
 	public PhysicalResourceSpecification createPhysicalResourceSpecification(@Valid PhysicalResourceSpecification physicalResourceSpecification) {
 
 		if (physicalResourceSpecification.getId() != null) {
-			throw new IllegalArgumentException("id must be empty while creating Category");
+			throw new IllegalArgumentException("id must be empty while creating PhysicalResourceSpecification");
 		}
 
 		setDefaultValues(physicalResourceSpecification);

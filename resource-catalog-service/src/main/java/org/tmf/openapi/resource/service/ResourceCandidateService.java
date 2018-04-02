@@ -19,123 +19,123 @@ import com.querydsl.core.types.Predicate;
 public class ResourceCandidateService {
 
 	@Autowired
-	private ResourceCandidateRepository serviceCandidateRepository;
+	private ResourceCandidateRepository resourceCandidateRepository;
 
-	public ResourceCandidate createServiceCandidate(@Valid ResourceCandidate serviceCandidate) {
+	public ResourceCandidate createResourceCandidate(@Valid ResourceCandidate resourceCandidate) {
 
-		if (serviceCandidate.getId() != null) {
-			throw new IllegalArgumentException("id must be empty while creating ServiceCandidate");
+		if (resourceCandidate.getId() != null) {
+			throw new IllegalArgumentException("id must be empty while creating resourceCandidate");
 		}
 
-		setDefaultValues(serviceCandidate);
+		setDefaultValues(resourceCandidate);
 
-		return serviceCandidateRepository.save(serviceCandidate);
+		return resourceCandidateRepository.save(resourceCandidate);
 	}
 
-	public ResourceCandidate findServiceCandidate(@NotNull String id) {
-		return serviceCandidateRepository.findById(id).get();
+	public ResourceCandidate findResourceCandidate(@NotNull String id) {
+		return resourceCandidateRepository.findById(id).get();
 	}
 
-	public List<ResourceCandidate> findAllServiceCandidates(Predicate predicate) {
+	public List<ResourceCandidate> findAllResourceCandidate(Predicate predicate) {
 
 		if (null == predicate) {
-			return serviceCandidateRepository.findAll();
+			return resourceCandidateRepository.findAll();
 		}
-		return toList(serviceCandidateRepository.findAll(predicate));
+		return toList(resourceCandidateRepository.findAll(predicate));
 	}
 
-	public void deleteServiceCandidate(@NotNull String id) {
+	public void deleteResourceCandidate(@NotNull String id) {
 
-		ResourceCandidate existingServiceCandidate = getExistingServiceCandidate(id);
-		serviceCandidateRepository.delete(existingServiceCandidate);
+		ResourceCandidate existingResourceCandidate = getExistingResourceCandidate(id);
+		resourceCandidateRepository.delete(existingResourceCandidate);
 
 	}
 
-	public ResourceCandidate updateServiceCandidate(@Valid ResourceCandidate serviceCandidate) {
+	public ResourceCandidate updateResourceCandidate(@Valid ResourceCandidate resourceCandidate) {
 
-		return saveServiceCandidate(serviceCandidate);
+		return saveResourceCandidate(resourceCandidate);
 	}
 
-	public ResourceCandidate partialUpdateServiceCandidate(ResourceCandidate serviceCandidate) {
+	public ResourceCandidate partialUpdateResourceCandidate(ResourceCandidate resourceCandidate) {
 
-		if (null == serviceCandidate.getId()) {
+		if (null == resourceCandidate.getId()) {
 			throw new IllegalArgumentException("id is mandatory field for update.");
 		}
 
-		ResourceCandidate existingServiceCandidate = getExistingServiceCandidate(serviceCandidate.getId());
+		ResourceCandidate existingResourceCandidate = getExistingResourceCandidate(resourceCandidate.getId());
 
 				
-		if (null != serviceCandidate.getName()) {
-			existingServiceCandidate.setName(serviceCandidate.getName());
+		if (null != resourceCandidate.getName()) {
+			existingResourceCandidate.setName(resourceCandidate.getName());
 		}
 
-		if (null != serviceCandidate.getDescription()) {
-			existingServiceCandidate.setDescription(serviceCandidate.getDescription());
+		if (null != resourceCandidate.getDescription()) {
+			existingResourceCandidate.setDescription(resourceCandidate.getDescription());
 		}	
 
-		if (null != serviceCandidate.getLifecycleStatus()) {
-			existingServiceCandidate.setLifecycleStatus(serviceCandidate.getLifecycleStatus());
+		if (null != resourceCandidate.getLifecycleStatus()) {
+			existingResourceCandidate.setLifecycleStatus(resourceCandidate.getLifecycleStatus());
 		}
 
-		if (null != serviceCandidate.getValidFor()) {
-			existingServiceCandidate.setValidFor(serviceCandidate.getValidFor());
+		if (null != resourceCandidate.getValidFor()) {
+			existingResourceCandidate.setValidFor(resourceCandidate.getValidFor());
 		}
 
-		if (null != serviceCandidate.getVersion()) {
-			existingServiceCandidate.setVersion(serviceCandidate.getVersion());
+		if (null != resourceCandidate.getVersion()) {
+			existingResourceCandidate.setVersion(resourceCandidate.getVersion());
 		}
 
-		if (null != serviceCandidate.getSchemaLocation()) {
-			existingServiceCandidate.setSchemaLocation(serviceCandidate.getSchemaLocation());
+		if (null != resourceCandidate.getSchemaLocation()) {
+			existingResourceCandidate.setSchemaLocation(resourceCandidate.getSchemaLocation());
 		}	
 
 		
-		if (null != serviceCandidate.getCategory()) {
-			existingServiceCandidate.setCategory(serviceCandidate.getCategory());
+		if (null != resourceCandidate.getCategory()) {
+			existingResourceCandidate.setCategory(resourceCandidate.getCategory());
 		}
 		
-		if(null!=serviceCandidate.getType()) {
-			existingServiceCandidate.setType(serviceCandidate.getType());
+		if(null!=resourceCandidate.getType()) {
+			existingResourceCandidate.setType(resourceCandidate.getType());
 		}
 		
-		if(null!=serviceCandidate.getBaseType()) {
-			existingServiceCandidate.setBaseType(serviceCandidate.getBaseType());
+		if(null!=resourceCandidate.getBaseType()) {
+			existingResourceCandidate.setBaseType(resourceCandidate.getBaseType());
 		}
 		
-		if(null!=serviceCandidate.getLastUpdate()) {
-			existingServiceCandidate.setLastUpdate(serviceCandidate.getLastUpdate());
+		if(null!=resourceCandidate.getLastUpdate()) {
+			existingResourceCandidate.setLastUpdate(resourceCandidate.getLastUpdate());
 		}
 		
-		if(null!=serviceCandidate.getResourceSpecification()) {
-			existingServiceCandidate.setResourceSpecification(serviceCandidate.getResourceSpecification());
+		if(null!=resourceCandidate.getResourceSpecification()) {
+			existingResourceCandidate.setResourceSpecification(resourceCandidate.getResourceSpecification());
 		}
 
-		return saveServiceCandidate(existingServiceCandidate);
+		return saveResourceCandidate(existingResourceCandidate);
 
 	}
 
-	private ResourceCandidate saveServiceCandidate(@Valid ResourceCandidate serviceCandidate) {
-		return serviceCandidateRepository.save(serviceCandidate);
+	private ResourceCandidate saveResourceCandidate(@Valid ResourceCandidate resourceCandidate) {
+		return resourceCandidateRepository.save(resourceCandidate);
 	}
 
-	private void setDefaultValues(ResourceCandidate serviceCandidate) {
+	private void setDefaultValues(ResourceCandidate resourceCandidate) {
 		
 
-		if (null == serviceCandidate.getType() || serviceCandidate.getType().trim().equals("")) {
+		if (null == resourceCandidate.getType() || resourceCandidate.getType().trim().equals("")) {
 
-			serviceCandidate.setType("ServiceCandidate");
+			resourceCandidate.setType("ResourceCandidate");
 		}
 
 	}
 
-	private ResourceCandidate getExistingServiceCandidate(@NotNull String id) {
-		Optional<ResourceCandidate> existingServiceCandidateOption = serviceCandidateRepository.findById(id);
-		if (!existingServiceCandidateOption.isPresent()) {
-			throw new IllegalArgumentException("ServiceCandidate with id " + id + " doesnot exists");
+	private ResourceCandidate getExistingResourceCandidate(@NotNull String id) {
+		Optional<ResourceCandidate> existingResourceCandidateOption = resourceCandidateRepository.findById(id);
+		if (!existingResourceCandidateOption.isPresent()) {
+			throw new IllegalArgumentException("ResourceCandidate with id " + id + " doesnot exists");
 		}
 
-		ResourceCandidate existingServiceCandidate = existingServiceCandidateOption.get();
-		return existingServiceCandidate;
+		ResourceCandidate existingResourceCandidate = existingResourceCandidateOption.get();
+		return existingResourceCandidate;
 	}
 
 }

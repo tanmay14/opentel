@@ -75,6 +75,10 @@ public class ResourceCategoryService {
 		if (null != resourceCategory.getSchemaLocation()) {
 			existingCategory.setSchemaLocation(resourceCategory.getSchemaLocation());
 		}
+		
+		if(null!=resourceCategory.getBaseType()) {
+			existingCategory.setBaseType(resourceCategory.getBaseType());
+		}
 
 		if (null != resourceCategory.getVersion()) {
 			existingCategory.setVersion(resourceCategory.getVersion());
@@ -90,6 +94,22 @@ public class ResourceCategoryService {
 
 		if (null != resourceCategory.getParentId()) {
 			existingCategory.setParentId(resourceCategory.getParentId());
+		}
+		
+		if (null != resourceCategory.getIsRoot()) {
+			existingCategory.setIsRoot(resourceCategory.getIsRoot());
+		}
+		
+		if (null!=resourceCategory.getCategory()) {
+			existingCategory.setCategory(resourceCategory.getCategory());
+		}
+		
+		if(null!=resourceCategory.getResourceCandidate()) {
+			existingCategory.setResourceCandidate(resourceCategory.getResourceCandidate());
+		}
+		
+		if(null!=resourceCategory.getRelatedParty()) {
+			existingCategory.setRelatedParty(resourceCategory.getRelatedParty());
 		}
 
 		

@@ -71,6 +71,10 @@ public class ResourceCatalogService {
 		if (null != resourceCatalog.getDescription()) {
 			existingCatalog.setDescription(resourceCatalog.getDescription());
 		}
+		
+		if(null !=resourceCatalog.getBaseType()) {
+			existingCatalog.setBaseType(resourceCatalog.getBaseType());
+		}
 
 		if (null != resourceCatalog.getSchemaLocation()) {
 			existingCatalog.setSchemaLocation(resourceCatalog.getSchemaLocation());
@@ -86,6 +90,14 @@ public class ResourceCatalogService {
 
 		if (null != resourceCatalog.getLifecycleStatus()) {
 			existingCatalog.setLifecycleStatus(resourceCatalog.getLifecycleStatus());
+		}
+		
+		if (null!= resourceCatalog.getRelatedParty()) {
+			existingCatalog.setRelatedParty(resourceCatalog.getRelatedParty());
+		}
+		
+		if (null!= resourceCatalog.getCategory()) {
+			existingCatalog.setCategory(resourceCatalog.getCategory());
 		}
 
 		return catalogRepository.save(existingCatalog);

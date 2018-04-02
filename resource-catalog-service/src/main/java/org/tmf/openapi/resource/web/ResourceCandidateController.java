@@ -35,79 +35,79 @@ import com.querydsl.core.types.Predicate;
 public class ResourceCandidateController {
 
 	@Autowired
-	private ResourceCandidateService serviceCandidateService;
+	private ResourceCandidateService resourceCandidateService;
 
 	@GetMapping(value = "", produces = MediaType.APPLICATION_JSON_VALUE)
-	public ResponseEntity<MappingJacksonValue> getServiceCandidate(
+	public ResponseEntity<MappingJacksonValue> getResourceCandidate(
 			@RequestParam MultiValueMap<String, String> requestParams, Pageable pageable,
 			@QuerydslPredicate(root = ResourceCandidate.class) Predicate predicate) {
 		return ResponseEntity
-				.ok(mapObjectWithExcludeFilter(populateHref(serviceCandidateService.findAllServiceCandidates(predicate)),
+				.ok(mapObjectWithExcludeFilter(populateHref(resourceCandidateService.findAllResourceCandidate(predicate)),
 						requestParams, "resourceCandidateFilter"));
 
 	}
 
 	@GetMapping(value = "/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
-	public ResponseEntity<MappingJacksonValue> getServiceCandidate(@PathVariable String id,
+	public ResponseEntity<MappingJacksonValue> getResourceCandidate(@PathVariable String id,
 			@RequestParam MultiValueMap<String, String> requestParams) {
 		return ResponseEntity.ok(mapObjectWithExcludeFilter(
-				populateHref(serviceCandidateService.findServiceCandidate(id)), requestParams, "resourceCandidateFilter"));
+				populateHref(resourceCandidateService.findResourceCandidate(id)), requestParams, "resourceCandidateFilter"));
 
 	}
 
 	@PostMapping(value = "", produces = MediaType.APPLICATION_JSON_VALUE)
-	public ResponseEntity<MappingJacksonValue> createServiceCandidate(
-			@RequestBody @Valid ResourceCandidate serviceCandidate) throws URISyntaxException {
+	public ResponseEntity<MappingJacksonValue> createResourceCandidate(
+			@RequestBody @Valid ResourceCandidate resourceCandidate) throws URISyntaxException {
 
-		serviceCandidate = serviceCandidateService.createServiceCandidate(serviceCandidate);
-		return ResponseEntity.created(populateHref(serviceCandidate).getHref())
-				.body(mapObjectWithExcludeFilter(serviceCandidate, null, "resourceCandidateFilter"));
+		resourceCandidate = resourceCandidateService.createResourceCandidate(resourceCandidate);
+		return ResponseEntity.created(populateHref(resourceCandidate).getHref())
+				.body(mapObjectWithExcludeFilter(resourceCandidate, null, "resourceCandidateFilter"));
 	}
 
 	@PutMapping(value = "/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
-	public ResponseEntity<MappingJacksonValue> updateServiceCandidate(@PathVariable String id,
-			@RequestBody ResourceCandidate serviceCandidate) {
+	public ResponseEntity<MappingJacksonValue> updateResourceCandidate(@PathVariable String id,
+			@RequestBody ResourceCandidate resourceCandidate) {
 
-		validateServiceCandidate(id, serviceCandidate);
+		validateResourceCandidate(id, resourceCandidate);
 		return ResponseEntity.ok(
-				mapObjectWithExcludeFilter(populateHref(serviceCandidateService.updateServiceCandidate(serviceCandidate)),
+				mapObjectWithExcludeFilter(populateHref(resourceCandidateService.updateResourceCandidate(resourceCandidate)),
 						null, "resourceCandidateFilter"));
 
 	}
 
 	@PatchMapping(value = "/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
-	public ResponseEntity<MappingJacksonValue> patchServiceCandidate(@PathVariable String id,
-			@RequestBody ResourceCandidate serviceCandidate) {
+	public ResponseEntity<MappingJacksonValue> patchResourceCandidate(@PathVariable String id,
+			@RequestBody ResourceCandidate resourceCandidate) {
 
-		validateServiceCandidate(id, serviceCandidate);
+		validateResourceCandidate(id, resourceCandidate);
 		return ResponseEntity.ok(mapObjectWithExcludeFilter(
-				populateHref(serviceCandidateService.partialUpdateServiceCandidate(serviceCandidate)), null,
+				populateHref(resourceCandidateService.partialUpdateResourceCandidate(resourceCandidate)), null,
 				"resourceCandidateFilter"));
 
 	}
 
 	@DeleteMapping(value = "/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<MappingJacksonValue> deleteCatalog(@PathVariable String id) {
-		serviceCandidateService.deleteServiceCandidate(id);
+		resourceCandidateService.deleteResourceCandidate(id);
 		return ResponseEntity.noContent().build();
 
 	}
 
-	private ResourceCandidate populateHref(ResourceCandidate serviceCandidate) {
-		serviceCandidate.setHref(linkTo(ResourceCandidateController.class).slash(serviceCandidate.getId()).toUri());
-		return serviceCandidate;
+	private ResourceCandidate populateHref(ResourceCandidate resourceCandidate) {
+		resourceCandidate.setHref(linkTo(ResourceCandidateController.class).slash(resourceCandidate.getId()).toUri());
+		return resourceCandidate;
 	}
 
-	private List<ResourceCandidate> populateHref(List<ResourceCandidate> serviceCandidates) {
-		for (ResourceCandidate serviceCandidate : serviceCandidates) {
-			populateHref(serviceCandidate);
+	private List<ResourceCandidate> populateHref(List<ResourceCandidate> resourceCandidates) {
+		for (ResourceCandidate resourceCandidate : resourceCandidates) {
+			populateHref(resourceCandidate);
 		}
-		return serviceCandidates;
+		return resourceCandidates;
 	}
 
-	private void validateServiceCandidate(String id, ResourceCandidate serviceCandidate) {
-		if ((null == serviceCandidate.getId())
-				|| (null != serviceCandidate.getId() && !serviceCandidate.getId().equals(id))) {
+	private void validateResourceCandidate(String id, ResourceCandidate resourceCandidate) {
+		if ((null == resourceCandidate.getId())
+				|| (null != resourceCandidate.getId() && !resourceCandidate.getId().equals(id))) {
 			throw new IllegalArgumentException("id cannot be updated.");
 		}
 	}
