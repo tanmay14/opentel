@@ -1,0 +1,255 @@
+db.serviceCatalog.insert({ 
+"id": "3830", 
+"href": "https://host:port/catalogManagement/serviceCatalog/3830",
+ "name": "Catalog Wholesale Business", 
+ "description": "This service catalog ...",
+ "@type": "ServiceCatalog", 
+ "@schemaLocation": "https://host:port/catalogManagement/schema/ServiceCatalog.yml ",
+ "@baseType": "Catalog", 
+ "version": "1.0", 
+ "validFor": { 
+ "startDateTime": "2017-08-29T00:00",
+ "endDateTime": "2018-03-25T00:00" 
+ }, 
+ "lastUpdate": "2017-08-27T00:00", 
+ "lifecycleStatus": "Active" 
+ })
+
+
+db.serviceCatalog.remove({
+        "_id" : ObjectId("5abcc9b80e67e22a2cf53704"),
+        "name" : "IOT Service Catalog",
+        "type" : "ServiceCatalog",
+        "_class" : "org.tmf.openapi.servicecatalog.domain.catalog.ServiceCatalog"
+})
+
+db.serviceCatalog.insert({ 
+"id": "3830", 
+"href": "https://host:port/catalogManagement/serviceCatalog/3830",
+ "name": "Catalog Wholesale Business", 
+ "description": "This service catalog ...",
+ "@type": "ServiceCatalog", 
+ "@schemaLocation": "https://host:port/catalogManagement/schema/ServiceCatalog.yml ",
+ "@baseType": "Catalog", 
+ "version": "1.0", 
+ "validFor": { 
+ "startDateTime": "2017-08-29T00:00",
+ "endDateTime": "2018-03-25T00:00" 
+ }, 
+ "lastUpdate": "2017-08-27T00:00", 
+ "lifecycleStatus": "Active" 
+ })
+ 
+ 
+ db.serviceCatalog.insert({
+    "id": "2355", 
+    "href": "https://host:port/catalogManagement/serviceCatalog/2355", 
+    "name": "IOT Service Catalog", 
+    "description": "This service catalog ...", 
+    "@type": "ServiceCatalog",
+    "@schemaLocation": "https://host:port/catalogManagement/schema/ServiceCatalog.yml", 
+    "@baseType": "Catalog",
+    "version": "1.0", 
+    "validFor": {
+        "startDateTime": "2017-08-17T00:00", 
+        "endDateTime": "2018-03-12T00:00"
+    }, 
+    "lastUpdate": "2017-08-14T00:00", 
+    "lifecycleStatus": "Active", 
+    "relatedParty": [
+        {
+            "id": "3426", 
+            "href": "https://host:port/partyManagement/organization/3426", 
+            "role": "vendor", 
+            "name": "Company ABC", 
+            "validFor": {
+                "startDateTime": "2017-08-14T00:00", 
+                "endDateTime": "2018-03-12T00:00"
+            }
+        }
+    ], 
+    "category": [
+        {
+            "id": "7752", 
+            "href": "https://host:port/catalogManagement/category/7752", 
+            "version": "1.0", 
+            "name": "IoT"
+        }
+    ]
+}
+)
+ 
+ 
+ 
+ 
+ 
+ db.serviceCandidate.insert({
+    "id": "7655", 
+    "href": "https://host:port/catalogManagement/serviceSpecification/7655", 
+    "name": "Firewall Service", 
+    "description": "This  service specification ...", 
+    "@type": "ResourceFacingServiceSpec", 
+    "@schemaLocation": "https://host:port/catalogManagement/schema/ResourceFacingServiceSpecification.yml", 
+    "@baseType": "ServiceSpecification", 
+    "version": "2.1", 
+    "validFor": {
+        "startDateTime": "2017-08-23T00:00", 
+        "endDateTime": "2018-03-25T00:00"
+    }, 
+    "lastUpdate": "2017-08-27T00:00", 
+    "lifecycleStatus": "Active", 
+    "isBundle": false, 
+    "resourceSpecification": [
+        {
+            "id": "42", 
+            "href": "http://hostname:port/catalogManagement/resourceFunctionSpec/42", 
+            "name": "Firewall", 
+            "version": "1.0"
+        }
+    ], 
+    "attachment": [
+        {
+            "description": "This  attachment ...", 
+            "href": "http://hostname:port/documentManagement/attachment/22", 
+            "id": "22", 
+            "type": "Document", 
+            "url": "http://xxxxx"
+        }
+    ], 
+    "serviceSpecCharacteristic": [
+                {
+            "name": "OperatingSystem", 
+            "description": "This  service spec characteristic ...", 
+            "valueType": "String",
+           "@valueSchemaLocation": "", 
+            "configurable": true, 
+            "validFor": {
+                "startDateTime": "2017-08-12T00:00", 
+                "endDateTime": "2018-03-07T00:00"
+            }, 
+            "@type": "ServiceSpecCharacteristic", 
+            "@schemaLocation": "https://host:port/catalogManagement/schema/ServiceSpecCharacteristic.yml",
+             "minCardinality": 0, 
+            "maxCardinality": 1, 
+            "isUnique": true, 
+            "regex": "", 
+            "extensible": false, 
+            "serviceSpecCharRelationship": [
+                {
+                    "type": "string", 
+                    "name": "OperatingSystem", 
+                    "id": "4690", 
+                    "href": "https://host:port/catalogManagement/serviceSpecification/4690", 
+                    "@type": "CustomerFacingServiceSpec", 
+                    "validFor": {
+                        "startDateTime": "2017-08-11T00:00", 
+                        "endDateTime": "2018-03-07T00:00"
+                    }
+                }
+            ], 
+            "serviceSpecCharacteristicValue": [
+                {
+                    "isDefault": true, 
+                    "value": "Android KitKat", 
+                    "validFor": {
+                        "startDateTime": "2017-08-06T00:00", 
+                        "endDateTime": "2018-03-07T00:00"
+                    }                    
+                }
+            ]
+        },
+        {
+            "name": "Scalability", 
+            "description": "Scalability parameters for this resource facing service spec ", 
+             "valueType": "CapabilityScalable",
+            "@valueSchemaLocation": "https://host:port/catalogManagement/schema/CapabilityScalable.yml", 
+            "configurable": true, 
+            "validFor": {
+                "startDateTime": "2017-08-17T00:00", 
+                "endDateTime": "2018-03-12T00:00"
+            }, 
+            "@type": "ServiceSpecCharacteristic", 
+            "@schemaLocation": "https://host:port/catalogManagement/schema/ServiceSpecCharacteristic.yml",            
+            "minCardinality": 0, 
+            "maxCardinality": 1, 
+            "isUnique": true, 
+            "extensible": true, 
+            "serviceSpecCharRelationship": [
+            ], 
+            "serviceSpecCharacteristicValue": [
+                {
+                    "valueType": "Object", 
+                    "value": {
+                             "minInstances": 1, 
+                             "maxInstances": 1000
+                     },
+                    "isDefault": true, 
+                    "validFor": {
+                        "startDateTime": "2017-08-17T00:00", 
+                        "endDateTime": "2018-03-12T00:00"
+                    },
+                    "@Type": "CapabilityScalable",
+                   "@schemaLocation": "https://host:port/catalogManagement/schema/CapabilityScalable.yml" 
+                }
+            ]
+        }
+    ], 
+    "relatedParty": [
+        {
+            "id": "3643", 
+            "href": "https://host:port/partyManagement/organization/3643", 
+            "role": "Supplier", 
+            "name": "Firewall Express", 
+            "validFor": {
+                "startDateTime": "2017-08-25T00:00", 
+                "endDateTime": "2018-03-25T00:00"
+            }
+        }
+    ], 
+    "serviceSpecRelationship": [
+        {
+            "type": "a string ...", 
+            "role": "a string ...", 
+            "id": "5563", 
+            "href": "https://host:port/catalogManagement/serviceSpecification/5563", 
+            "name": "a string ...", 
+            "validFor": {
+                "startDateTime": "2017-08-25T00:00", 
+                "endDateTime": "2018-03-25T00:00"
+            }
+        }
+    ], 
+    "targetServiceSchema": {
+        "@type": "RFS", 
+        "@schemaLocation": "https://host:port/catalogManagement/schema/RFS.yml"
+    }
+}
+)
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
