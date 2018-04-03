@@ -91,11 +91,11 @@ public class CategoryController {
 		return category;
 	}
 
-	private List<ServiceCategory> populateHref(List<ServiceCategory> catalogs) {
-		for (ServiceCategory category : catalogs) {
+	private List<ServiceCategory> populateHref(List<ServiceCategory> categories) {
+		for (ServiceCategory category : categories) {
 			populateHref(category);
 		}
-		return catalogs;
+		return categories;
 	}
 
 	private void validateCategory(String id, ServiceCategory category) {

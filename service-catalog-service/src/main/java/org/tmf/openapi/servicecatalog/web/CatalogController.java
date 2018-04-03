@@ -41,7 +41,7 @@ public class CatalogController {
 	public ResponseEntity<MappingJacksonValue> getCatalog(@RequestParam MultiValueMap<String, String> requestParams,
 			Pageable pageable, @QuerydslPredicate(root = ServiceCatalog.class) Predicate predicate) {
 		return ResponseEntity.ok(mapObjectWithExcludeFilter(populateHref(catalogService.findAllCatalogs(predicate)),
-				requestParams, "serviceserviceCatalogFilter"));
+				requestParams, "serviceCatalogFilter"));
 
 	}
 
