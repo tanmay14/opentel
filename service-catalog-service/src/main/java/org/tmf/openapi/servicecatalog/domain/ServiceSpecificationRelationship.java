@@ -11,7 +11,7 @@ import lombok.EqualsAndHashCode;
 @EqualsAndHashCode(callSuper = true)
 public class ServiceSpecificationRelationship extends BaseRef{
 	
-	private String type;
+	
 	
 	private String role;
 

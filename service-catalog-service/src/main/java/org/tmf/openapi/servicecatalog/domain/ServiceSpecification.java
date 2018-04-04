@@ -1,5 +1,6 @@
 package org.tmf.openapi.servicecatalog.domain;
 
+import java.net.URI;
 import java.util.Date;
 import java.util.List;
 
@@ -7,23 +8,36 @@ import javax.validation.Valid;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 
+import org.springframework.data.annotation.Transient;
+import org.springframework.data.mongodb.core.mapping.Document;
+
 import org.tmf.openapi.servicecatalog.domain.common.LifeCycleStatus;
 import org.tmf.openapi.servicecatalog.domain.common.RelatedPartyRef;
 import org.tmf.openapi.servicecatalog.domain.common.ResourceSpecificationRef;
-import org.tmf.openapi.servicecatalog.domain.common.TargetProductSchemaRef;
+import org.tmf.openapi.servicecatalog.domain.common.TargetServiceSchemaRef;
 
+import com.fasterxml.jackson.annotation.JsonFilter;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.querydsl.core.annotations.QueryEntity;
 
 import lombok.Data;
+import lombok.EqualsAndHashCode;
+import lombok.ToString;
 
+@Document
+@JsonFilter("serviceSpecificationFilter")
 @Data
+@EqualsAndHashCode(of = "id")
+@ToString(includeFieldNames = true)
+@QueryEntity
 public class ServiceSpecification {
 
 	@NotEmpty
 	private String id;
 
 	@NotEmpty
-	private String href;
+	@Transient
+	private URI href;
 
 	private String name;
 
@@ -58,9 +72,14 @@ public class ServiceSpecification {
 
 	private List<RelatedPartyRef> relatedParty;
 
-	private List<ServiceSpecificationRelationship> serviceSpecificationRelationship;	
+	private List<ServiceSpecificationRelationship> serviceSpecRelationship;	
 
-	private TargetProductSchemaRef targetServiceSchema;
+	private TargetServiceSchemaRef targetServiceSchema;
+	
+	private List<ServiceSpecCharRelationship> serviceSpecCharRelationship;
+	
+	private List<ServiceSpecCharacteristicValue> serviceSpecCharacteristicValue;
+	
 	
 
 }
