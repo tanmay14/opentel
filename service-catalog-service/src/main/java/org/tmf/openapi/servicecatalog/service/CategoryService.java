@@ -2,7 +2,8 @@ package org.tmf.openapi.servicecatalog.service;
 
 import static org.tmf.openapi.servicecatalog.common.ListUtils.toList;
 
-
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -92,8 +93,25 @@ public class CategoryService {
 		if (null != serviceCategory.getParentId()) {
 			existingCategory.setParentId(serviceCategory.getParentId());
 		}
-
 		
+		if(null !=serviceCategory.getBaseType()) {
+			existingCategory.setBaseType(serviceCategory.getBaseType());
+		}
+		
+		if (null!=serviceCategory.getIsRoot()) {
+			existingCategory.setIsRoot(serviceCategory.getIsRoot());
+		}
+		
+		if (null!=serviceCategory.getServiceCandidate()) {
+			existingCategory.setServiceCandidate(serviceCategory.getServiceCandidate());
+		}
+		
+		if(null!=serviceCategory.getCategory()) {
+			existingCategory.setCategory(serviceCategory.getCategory());
+		}
+
+		SimpleDateFormat df=new SimpleDateFormat("yyyy-MM-dd'T'HH:mm");	
+        existingCategory.setLastUpdate(df.format(new Date()));
 
 		return saveCategory(existingCategory);
 
@@ -115,6 +133,13 @@ public class CategoryService {
 		if (null == serviceCategory.getVersion()) {
 			serviceCategory.setVersion("1.0");
 		}
+		
+		if (null == serviceCategory.getLifecycleStatus() || serviceCategory.getLifecycleStatus().trim().equals("")) {
+			serviceCategory.setLifecycleStatus("In Design");
+		}
+		
+		SimpleDateFormat df=new SimpleDateFormat("yyyy-MM-dd'T'HH:mm");		
+		serviceCategory.setLastUpdate(df.format(new Date()));
 
 		/*if (null == serviceCategory.getIsRoot()) {
 			serviceCategory.setIsRoot(true);
