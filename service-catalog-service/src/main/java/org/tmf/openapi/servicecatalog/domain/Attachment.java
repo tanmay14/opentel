@@ -27,7 +27,7 @@ public class Attachment extends BaseRef {
 
 	@NotNull
 	@Valid
-	private TimePeriod validFor;
+	private TimePeriod validFor; 
 
 	/*@JsonProperty("@type")
 	private String type;

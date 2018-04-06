@@ -7,5 +7,5 @@ import lombok.EqualsAndHashCode;
 @EqualsAndHashCode(callSuper = true)
 public class ResourceSpecificationRef extends BaseRef {
 
-	private String version;
+	private String version; //1.0
 }

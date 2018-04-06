@@ -14,11 +14,11 @@ import lombok.ToString;
 public abstract class BaseRef {
 
 	@NotEmpty
-	private String id;
+	private String id; //null
 
-	private String href;
+	private String href; //same
 
-	private String name;
+	private String name; 
 
 	@JsonProperty("@type")
 	private String type;

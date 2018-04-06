@@ -2,6 +2,11 @@ package org.tmf.openapi.servicecatalog.service;
 
 import static org.tmf.openapi.servicecatalog.common.ListUtils.toList;
 
+import java.text.SimpleDateFormat;
+import java.time.Instant;
+import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -94,22 +99,20 @@ public class ServiceCandidateService {
 			existingServiceCandidate.setCategory(serviceCandidate.getCategory());
 		}
 		
-		if(null!=serviceCandidate.getType()) {
-			existingServiceCandidate.setType(serviceCandidate.getType());
-		}
 		
 		if(null!=serviceCandidate.getBaseType()) {
 			existingServiceCandidate.setBaseType(serviceCandidate.getBaseType());
 		}
 		
-		if(null!=serviceCandidate.getLastUpdate()) {
-			existingServiceCandidate.setLastUpdate(serviceCandidate.getLastUpdate());
-		}
 		
 		if(null!=serviceCandidate.getServiceSpecification()) {
 			existingServiceCandidate.setServiceSpecification(serviceCandidate.getServiceSpecification());
 		}
-
+		
+		//existingServiceCandidate.setLastUpdate(LocalTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm").ISO_DATE_TIME.withZone().format(Instant.now()));
+		SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-ddTHH:mm");
+		existingServiceCandidate.setLastUpdate(sdf.format(new Date()));
+		
 		return saveServiceCandidate(existingServiceCandidate);
 
 	}
@@ -125,6 +128,18 @@ public class ServiceCandidateService {
 
 			serviceCandidate.setType("ServiceCandidate");
 		}
+		
+		if (null == serviceCandidate.getVersion() || serviceCandidate.getVersion().trim().equals("")) {
+			serviceCandidate.setVersion("1.0");
+		}
+		
+		if (null== serviceCandidate.getLifecycleStatus() || serviceCandidate.getLifecycleStatus().trim().equals(""))
+		{
+			serviceCandidate.setLifecycleStatus("In Design");
+		}
+		
+		SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-ddTHH:mm");
+		serviceCandidate.setLastUpdate(sdf.format(new Date()));
 
 	}
 

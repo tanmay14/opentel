@@ -8,7 +8,9 @@ import javax.validation.Valid;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 
+import org.springframework.data.annotation.Id;
 import org.springframework.data.annotation.Transient;
+import org.springframework.data.mongodb.core.index.Indexed;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import org.tmf.openapi.servicecatalog.domain.common.LifeCycleStatus;
@@ -32,17 +34,19 @@ import lombok.ToString;
 @QueryEntity
 public class ServiceSpecification {
 
-	@NotEmpty
+	@Id
 	private String id;
-
-	@NotEmpty
+	
 	@Transient
 	private URI href;
 
+	@NotEmpty
+	@Indexed(unique = true)
 	private String name;
 
 	private String description;
 	
+	@NotEmpty
 	@JsonProperty("@type")
 	private String type;
 
@@ -54,15 +58,15 @@ public class ServiceSpecification {
 	
 	@NotNull
 	@Valid
-	private TimePeriod validFor;
+	private TimePeriod validFor; //startdate-->todays date
 
-	private String version;
+	private String version; //version-->1.0
 	
-	private Date lastUpdate;
+	private String lastUpdate; //todays date
 
-	private LifeCycleStatus lifecycleStatus;
+	private String lifecycleStatus; //In design 
 
-	private boolean isBundle;
+	private boolean isBundle; //false
 
 	private List<ResourceSpecificationRef> resourceSpecification;
 	
