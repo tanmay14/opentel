@@ -12,9 +12,16 @@ import lombok.EqualsAndHashCode;
 
 @Data
 
-public class ResourceSpecificationRef {
+public class ResourceRelationship {
 
-	private String version;
+	private String type;
+	
+	@Valid
+	private TimePeriod validFor;
+	
+	private ResourceRef resourceRef;
+	
+
 	
 
 }

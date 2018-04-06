@@ -10,7 +10,7 @@ import javax.validation.Payload;
 
 @Target({ ElementType.TYPE })
 @Retention(RetentionPolicy.RUNTIME)
-@Constraint(validatedBy = { CategoryValidator.class })
+@Constraint(validatedBy = { ResourceValidator.class })
 
 public @interface ValidCategory {
 

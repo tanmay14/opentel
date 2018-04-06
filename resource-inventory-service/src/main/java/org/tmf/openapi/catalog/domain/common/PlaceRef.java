@@ -4,17 +4,15 @@ import javax.validation.Valid;
 
 import org.tmf.openapi.catalog.domain.TimePeriod;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonPropertyDescription;
-
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
 @Data
+@EqualsAndHashCode(callSuper = true)
+public class PlaceRef extends BaseRef {
 
-public class ResourceSpecificationRef {
+	private String role;
 
-	private String version;
 	
 
 }

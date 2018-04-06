@@ -4,17 +4,18 @@ import javax.validation.Valid;
 
 import org.tmf.openapi.catalog.domain.TimePeriod;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonPropertyDescription;
-
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
 @Data
 
-public class ResourceSpecificationRef {
+public class Note {
 
-	private String version;
+	private String author;
+
+	@Valid
+	private String date;
 	
+	private String text;
 
 }

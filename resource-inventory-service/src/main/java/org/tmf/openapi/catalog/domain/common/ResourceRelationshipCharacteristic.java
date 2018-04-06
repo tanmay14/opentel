@@ -12,9 +12,19 @@ import lombok.EqualsAndHashCode;
 
 @Data
 
-public class ResourceSpecificationRef {
+public class ResourceRelationshipCharacteristic {
 
-	private String version;
+	private String name;
+	
+	private String value;
+	
+	@JsonProperty("@schemaLocation")
+	private String schemaLocation;
+	
+	@JsonProperty("@type")
+	private String type;
+	
+
 	
 
 }

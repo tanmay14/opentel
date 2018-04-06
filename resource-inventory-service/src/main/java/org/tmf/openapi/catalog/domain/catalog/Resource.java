@@ -12,9 +12,13 @@ import org.springframework.data.annotation.Transient;
 import org.springframework.data.mongodb.core.index.Indexed;
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.tmf.openapi.catalog.domain.TimePeriod;
-import org.tmf.openapi.catalog.domain.common.CategoryRef;
-import org.tmf.openapi.catalog.domain.common.LifeCycleStatus;
+import org.tmf.openapi.catalog.domain.common.Note;
+import org.tmf.openapi.catalog.domain.common.PlaceRef;
 import org.tmf.openapi.catalog.domain.common.RelatedPartyRef;
+import org.tmf.openapi.catalog.domain.common.ResourceAttachment;
+import org.tmf.openapi.catalog.domain.common.ResourceCharacteristic;
+import org.tmf.openapi.catalog.domain.common.ResourceRelationship;
+import org.tmf.openapi.catalog.domain.common.ResourceSpecificationRef;
 
 import com.fasterxml.jackson.annotation.JsonFilter;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -25,12 +29,12 @@ import lombok.EqualsAndHashCode;
 import lombok.ToString;
 
 @Document
-@JsonFilter("serviceCatalogFilter")
+@JsonFilter("resourceInventoryFilter")
 @Data
 @EqualsAndHashCode(of = "id")
 @ToString(includeFieldNames = true)
 @QueryEntity
-public class ServiceCatalog {
+public class Resource {
 
 	@Id
 	private String id;
@@ -38,11 +42,17 @@ public class ServiceCatalog {
 	@Transient
 	private URI href;
 
+	private String description;
+	
+	private String category;
+	
+	private TimePeriod validFor;
+	
 	@NotEmpty
 	@Indexed(unique = true)
 	private String name;
-
-	private String description;
+	
+	private String lifecycleStatus;	
 
 	@JsonProperty("@type")
 	private String type;
@@ -53,19 +63,21 @@ public class ServiceCatalog {
 	@JsonProperty("@schemaLocation")
 	private String schemaLocation;
 
-	private String lastUpdate;
-
-	private String lifecycleStatus;
-
 	private String version;
-
 	
-	private TimePeriod validFor;
-
-	@Valid
-	private List<CategoryRef> category;
+	private List<ResourceRelationship> resourceRelationship;
+	
+	private List<PlaceRef> place;
+	
+	private List<Note> note;
+	
+	private ResourceSpecificationRef resourceSpecification;	
 
 	@Valid
 	private List<RelatedPartyRef> relatedParty;
+	
+	private List<ResourceCharacteristic> resorceCharacteristic;
+	
+	private List<ResourceAttachment> resourceAttachment;
 
 }

@@ -10,11 +10,11 @@ import javax.validation.Payload;
 
 @Target({ ElementType.TYPE })
 @Retention(RetentionPolicy.RUNTIME)
-@Constraint(validatedBy = { ServiceCandidateValidator.class })
+@Constraint(validatedBy = { ResourceValidator.class })
 
-public @interface ValidServiceCandidate {
+public @interface ValidResource {
 
-	String message() default "{org.tmf.openapi.catlog.validation.productOffering}";
+	String message() default "{org.tmf.openapi.catlog.validation.resource}";
 
 	Class<?>[] groups() default {};
 

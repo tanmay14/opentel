@@ -11,10 +11,13 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 
 @Data
+@EqualsAndHashCode(callSuper = true)
+public class ResourceAttachment extends BaseRef{
 
-public class ResourceSpecificationRef {
+	private String url;
 
-	private String version;
+	
+
 	
 
 }
