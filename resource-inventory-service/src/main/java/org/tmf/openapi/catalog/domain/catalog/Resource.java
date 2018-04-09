@@ -54,6 +54,7 @@ public class Resource {
 	
 	private String lifecycleStatus;	
 
+	@NotEmpty
 	@JsonProperty("@type")
 	private String type;
 

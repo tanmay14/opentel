@@ -118,7 +118,7 @@ public class ResourceService {
 	private void setDefaultValues(Resource resource) {
 		
 	
-		if (null == resource.getType() || resource.getType().trim().equals("")) {
+		/*if (null == resource.getType() || resource.getType().trim().equals("")) {
 			resource.setType("ServiceResource");
 		}
 		if (null == resource.getBaseType() || resource.getBaseType().trim().equals("")) {
@@ -131,7 +131,7 @@ public class ResourceService {
 		
 		if (null == resource.getVersion()) {
 			resource.setVersion("1.0");
-		}		
+		}		*/
 		
 	}
 	

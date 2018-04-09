@@ -12,7 +12,9 @@ import lombok.EqualsAndHashCode;
 
 @Data
 
-public class ResourceSpecificationRef {
+@EqualsAndHashCode(callSuper = true)
+
+public class ResourceSpecificationRef extends BaseRef {
 
 	private String version;
 	

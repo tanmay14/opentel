@@ -16,7 +16,7 @@ public class ResourceRelationshipCharacteristic {
 
 	private String name;
 	
-	private String value;
+	private ValueRef value;
 	
 	@JsonProperty("@schemaLocation")
 	private String schemaLocation;
