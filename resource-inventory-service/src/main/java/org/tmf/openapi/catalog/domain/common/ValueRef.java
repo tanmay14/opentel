@@ -11,7 +11,7 @@ import lombok.ToString;
 @Data
 @EqualsAndHashCode(of = "id")
 @ToString(includeFieldNames = true)
-public abstract class ValueRef {
+public class ValueRef {
 
 	@JsonProperty("@type")
 	private String type;

@@ -19,6 +19,7 @@ import org.tmf.openapi.catalog.domain.common.ResourceAttachment;
 import org.tmf.openapi.catalog.domain.common.ResourceCharacteristic;
 import org.tmf.openapi.catalog.domain.common.ResourceRelationship;
 import org.tmf.openapi.catalog.domain.common.ResourceSpecificationRef;
+import org.tmf.openapi.catalog.domain.common.ValueRef;
 
 import com.fasterxml.jackson.annotation.JsonFilter;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -81,6 +82,6 @@ public class LogicalResource extends Resource{
 	
 	private List<ResourceAttachment> resourceAttachment;*/
 	
-	private String value;
+	private ValueRef value;
 
 }

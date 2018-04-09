@@ -94,8 +94,8 @@ public class ResourceService {
 			existingResource.setValidFor(resource.getValidFor());
 		}
 
-		if (null != resource.getLifecycleStatus()) {
-			existingResource.setLifecycleStatus(resource.getLifecycleStatus());
+		if (null != resource.getLifecycleState()) {
+			existingResource.setLifecycleState(resource.getLifecycleState());
 		}
 		
        
@@ -123,15 +123,15 @@ public class ResourceService {
 		}
 		if (null == resource.getBaseType() || resource.getBaseType().trim().equals("")) {
 			resource.setBaseType("Resource");
-		}		
+		}*/		
 		
-		if (null == resource.getLifecycleStatus() || resource.getLifecycleStatus().trim().equals("")) {
-			resource.setLifecycleStatus("In Design");
+		if (null == resource.getLifecycleState() || resource.getLifecycleState().trim().equals("")) {
+			resource.setLifecycleState("In Design");
 		}
 		
 		if (null == resource.getVersion()) {
 			resource.setVersion("1.0");
-		}		*/
+		}		
 		
 	}
 	

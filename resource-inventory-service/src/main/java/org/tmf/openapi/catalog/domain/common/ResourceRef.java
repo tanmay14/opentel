@@ -11,7 +11,7 @@ import lombok.ToString;
 @Data
 @EqualsAndHashCode(of = "id")
 @ToString(includeFieldNames = true)
-public abstract class ResourceRef {
+public class ResourceRef {
 
 	@NotEmpty
 	private String id; //null

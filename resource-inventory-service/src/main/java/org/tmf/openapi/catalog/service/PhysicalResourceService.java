@@ -94,8 +94,8 @@ public class PhysicalResourceService {
 			existingPhysicalResource.setValidFor(resource.getValidFor());
 		}
 
-		if (null != resource.getLifecycleStatus()) {
-			existingPhysicalResource.setLifecycleStatus(resource.getLifecycleStatus());
+		if (null != resource.getLifecycleState()) {
+			existingPhysicalResource.setLifecycleState(resource.getLifecycleState());
 		}
 		
        
@@ -125,8 +125,8 @@ public class PhysicalResourceService {
 			resource.setBaseType("PhysicalResource");
 		}		
 		
-		if (null == resource.getLifecycleStatus() || resource.getLifecycleStatus().trim().equals("")) {
-			resource.setLifecycleStatus("In Design");
+		if (null == resource.getLifecycleState() || resource.getLifecycleState().trim().equals("")) {
+			resource.setLifecycleState("In Design");
 		}
 		
 		if (null == resource.getVersion()) {

@@ -31,7 +31,7 @@ import org.tmf.openapi.catalog.service.ResourceService;
 import com.querydsl.core.types.Predicate;
 
 @RestController
-@RequestMapping("/resourceInventoryManagement/Resource")
+@RequestMapping("/resourceInventoryManagement/resource")
 public class ResourceController {
 
 	@Autowired

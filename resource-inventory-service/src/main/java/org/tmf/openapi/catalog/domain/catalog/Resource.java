@@ -52,7 +52,8 @@ public class Resource {
 	@Indexed(unique = true)
 	private String name;
 	
-	private String lifecycleStatus;	
+	
+	private String lifecycleState;	
 
 	@NotEmpty
 	@JsonProperty("@type")
@@ -68,7 +69,7 @@ public class Resource {
 	
 	private List<ResourceRelationship> resourceRelationship;
 	
-	private List<PlaceRef> place;
+	private PlaceRef place;
 	
 	private List<Note> note;
 	
@@ -77,7 +78,7 @@ public class Resource {
 	@Valid
 	private List<RelatedPartyRef> relatedParty;
 	
-	private List<ResourceCharacteristic> resorceCharacteristic;
+	private List<ResourceCharacteristic> resourceCharacteristic;
 	
 	private List<ResourceAttachment> resourceAttachment;
 

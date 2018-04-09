@@ -19,7 +19,7 @@ public class ResourceRelationship {
 	@Valid
 	private TimePeriod validFor;
 	
-	private ResourceRef resourceRef;
+	private ResourceRef resource;
 	
 
 	

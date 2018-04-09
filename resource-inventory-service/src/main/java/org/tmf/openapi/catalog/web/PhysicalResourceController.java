@@ -31,7 +31,7 @@ import org.tmf.openapi.catalog.service.PhysicalResourceService;
 import com.querydsl.core.types.Predicate;
 
 @RestController
-@RequestMapping("/physicalResourceInventoryManagement/physicalResource")
+@RequestMapping("/resourceInventoryManagement/physicalResource")
 public class PhysicalResourceController {
 
 	@Autowired

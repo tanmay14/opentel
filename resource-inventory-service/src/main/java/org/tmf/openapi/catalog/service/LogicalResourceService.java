@@ -94,8 +94,8 @@ public class LogicalResourceService {
 			existingLogicalResource.setValidFor(resource.getValidFor());
 		}
 
-		if (null != resource.getLifecycleStatus()) {
-			existingLogicalResource.setLifecycleStatus(resource.getLifecycleStatus());
+		if (null != resource.getLifecycleState()) {
+			existingLogicalResource.setLifecycleState(resource.getLifecycleState());
 		}
 		
        
@@ -125,8 +125,8 @@ public class LogicalResourceService {
 			resource.setBaseType("LogicalResource");
 		}		
 		
-		if (null == resource.getLifecycleStatus() || resource.getLifecycleStatus().trim().equals("")) {
-			resource.setLifecycleStatus("In Design");
+		if (null == resource.getLifecycleState() || resource.getLifecycleState().trim().equals("")) {
+			resource.setLifecycleState("In Design");
 		}
 		
 		if (null == resource.getVersion()) {
